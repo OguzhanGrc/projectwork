@@ -1,0 +1,65 @@
+<<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" >
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<title>Meeting Page</title>
+</head>
+<body style="background-color:green">
+		<div class="form-group">
+  <form action="#" th:action="@{/addMeetings}" th:object="${meeting}" method="post">
+		
+		<table>
+			<tr>
+				<td>Name:</td>
+
+			</tr>
+			<tr>
+				<td>Description:</td>
+<!-- 				<td><input type="text" th:field="*{description}" /></td> -->
+			</tr>
+			
+			
+			
+			<tr>
+				<td><button type="submit">Save</button></td>
+			</tr>
+		</table>
+	
+	</form>
+</div>
+
+<div>
+<table id="myTableId" class="table" >
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="meeting : ${meetings}">
+                <td th:text="${meeting?.id}"></td>
+                <td th:text="${meeting?.name}"></td>
+                <td th:text="${meeting?.description}"></td>
+                
+                <td><form action="/delete/${id}" th:action="@{/delete/${id}}" th:object="${meeting}" method="post">
+                 <button type="submit" class="btn btn-primary">Delete</button>
+                </form>
+                   </td>
+                   
+                   <td><form action="/update/${id}" th:action="@{/update/${id}}" th:object="${meeting}" method="post">
+                 <button type="submit" class="btn btn-danger">Update</button>
+                </form>
+                   </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" >
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<title>Employee</title>
+</head>
+<body style="background-color:yellow">
+		<div class="form-group">
+  <form action="#" th:action="@{/addEmployee}" th:object="${employee}" method="post">
+		<h3>Employee Page</h3>
+		<div class="col-md-4">
+		
+		<table>
+			<tr>
+				<td>Name:</td>
+				<td><input type="text" th:field="*{name}" /></td>
+			</tr>
+			<tr>
+				<td>Surname:</td>
+				<td><input type="text" th:field="*{surname}" /></td>
+			</tr>
+			<tr>
+				<td>Salary:</td>
+				<td><input type="text" th:field="*{salary}" /></td>
+			</tr>
+			
+			
+			<tr>
+				<td><button type="submit">Save</button></td>
+			</tr>
+		</table>
+		</div>
+	</form>
+</div>
+
+<div>
+<table id="myTableId" class="table" >
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>FirstName</th>
+                <th>LastName</th>
+                <th>Salary</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="employee : ${employees}">
+                <td th:text="${employee?.id}"></td>
+                <td th:text="${employee?.name}"></td>
+                <td th:text="${employee?.surname}"></td>
+                <td th:text="${employee?.salary}"></td>
+                <td><form action="/delete/${id}" th:action="@{/delete/${id}}" th:object="${employee}" method="post">
+                 <button type="submit" class="btn btn-primary">Delete</button>
+                </form>
+                   </td>
+                   
+                   <td><form action="/update/${id}" th:action="@{/update/${id}}" th:object="${employee}" method="post">
+                 <button type="submit" class="btn btn-danger">Update</button>
+                </form>
+                   </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
