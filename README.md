@@ -1,4 +1,4 @@
-# İş Proje Çalışması
+# Project Work
 # Employee-Department-Meetings  System
    I have made this project using Spring Boot first time.  I have tried to establish the system 
    via communicating viewpages --> Controllerpages ---> ServicePages  and -----> Repository Pages
